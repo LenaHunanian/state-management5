@@ -7,20 +7,20 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     @State private var user = FormModel(username: "Some Name")
     var body: some View {
-        UserView(user: $user)
+        UserView(user: user)
     }
 }
 
 struct UserView: View {
-    @Binding var user: FormModel
+    @Bindable var user: FormModel
     var body: some View {
         Form {
             Section(header: Text("Name")) {
-                TextField("Enter Your Name", text: $user.username)
-                    
+                TextField("Enter Your Name", text: $user.username)   
             }
             Section{
                 Button("Submit"){
@@ -33,12 +33,8 @@ struct UserView: View {
                 Text(user.submitText)
             }
         }
-    }
-    
-    
+    }  
 }
-
-
 
 #Preview {
     ContentView()
